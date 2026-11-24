@@ -195,7 +195,7 @@ void PanasonicACCNT::loop() {
 
     this->rx_buffer_.clear();  // Reset buffer
   }
-  if(!this->cmd.empty)
+  if(!this->cmd.empty())
   {
     handle_cmd();
   }
