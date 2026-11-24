@@ -195,8 +195,14 @@ void PanasonicACCNT::loop() {
 
     this->rx_buffer_.clear();  // Reset buffer
   }
-  handle_cmd();
-  handle_poll();  // Handle sending poll packets
+  if(!this->cmd.empty)
+  {
+    handle_cmd();
+  }
+  else
+  {
+    handle_poll();
+  }
 }
 
 /*
@@ -440,7 +446,7 @@ void PanasonicACCNT::handle_cmd() {
  */
 
 bool PanasonicACCNT::verify_packet() {
-  if (this->rx_buffer_.size() < 12) {
+  if (this->rx_buffer_.size() != 32) {
     ESP_LOGW(TAG, "Dropping invalid packet (length)");
 
     this->rx_buffer_.clear();  // Reset buffer
