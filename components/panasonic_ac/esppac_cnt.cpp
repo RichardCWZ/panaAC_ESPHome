@@ -446,7 +446,7 @@ void PanasonicACCNT::handle_cmd() {
  */
 
 bool PanasonicACCNT::verify_packet() {
-  if (this->rx_buffer_.size() != 32) {
+  if (this->rx_buffer_.size() != 35) {
     ESP_LOGW(TAG, "Dropping invalid packet (length)");
 
     this->rx_buffer_.clear();  // Reset buffer
